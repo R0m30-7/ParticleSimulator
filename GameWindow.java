@@ -1,3 +1,5 @@
+package ProgettiMiei.Java.particleSimulator;
+
 import java.awt.Dimension;
 
 import javax.swing.JFrame;

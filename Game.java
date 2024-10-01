@@ -1,3 +1,5 @@
+package ProgettiMiei.Java.particleSimulator;
+
 public class Game implements Runnable {
 
     protected GameWindow gameWindow;

@@ -1,3 +1,5 @@
+package ProgettiMiei.Java.particleSimulator;
+
 public class Particle {
     double x = 0;
     double y = 0;
@@ -5,7 +7,7 @@ public class Particle {
     int charge = 1;
     double xAccel = 0;
     double yAccel = 0;
-    double minVel = 0.0001;
+    double minVel = 0.000001;
 
     public Particle(double x, double y, boolean positive, int charge){
         this.x = x;
@@ -15,19 +17,14 @@ public class Particle {
     }
 
     public void UpdatePos(double theta, double acceleration){
-        double lastx = x;
-        double lasty = y;
         x += xAccel / Game.FPSGoal;
         y += yAccel / Game.FPSGoal;
 
-        if(acceleration != 0){
-            xAccel += acceleration * Math.cos(theta) * GamePanel.friction;
-            yAccel += acceleration * Math.sin(theta) * GamePanel.friction;
-        } else {
-            theta = Math.atan2(lasty - y, lastx - x);
-            xAccel *= Math.abs(Math.cos(theta) * GamePanel.friction);
-            yAccel *= Math.abs(Math.sin(theta) * GamePanel.friction);
-        }
+        xAccel += acceleration * Math.cos(theta);
+        yAccel += acceleration * Math.sin(theta);
+        
+        xAccel *= GamePanel.friction;
+        yAccel *= GamePanel.friction;
 
         if(Math.abs(yAccel) < minVel && Math.abs(xAccel) < minVel){
             xAccel = 0;

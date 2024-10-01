@@ -1,3 +1,5 @@
+package ProgettiMiei.Java.particleSimulator;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,9 +25,9 @@ public class GamePanel extends JPanel {
     protected static int FPSToDisplay = 0;  //? Visualizzo gli FPS a schermo
     private static long lastSec = System.nanoTime();    //? Salva il secondo precedente
 
-    private int K = 100000;    //? Costante quella della formula fisica
+    private int K = 100000;    //? Costante
     private int radius = dotDiameter * 10;    //? Il raggio di azione di una particella, da moltiplicare per la carica della particella
-    protected static double friction = 0.97;  //? Moltiplicata all'accelerazione
+    protected static double friction = 0.985;  //? Moltiplicata all'accelerazione
     private double theta = 0;
     private double acceleration = 0;
 
@@ -59,6 +61,7 @@ public class GamePanel extends JPanel {
         mouseY = (int) MouseInfo.getPointerInfo().getLocation().getY() - Game.getyLoc();
         g.drawOval(mouseX - MouseInput.getMouseCircleRadius()/2, mouseY - MouseInput.getMouseCircleRadius()/2, MouseInput.getMouseCircleRadius(), MouseInput.getMouseCircleRadius());
 
+        //? Itero ogni particella a schermo
         for(int i = 0; i < particles.size(); i++){
             CalculateAccParticle(i);
             particles.get(i).UpdatePos(theta, acceleration);
@@ -107,6 +110,7 @@ public class GamePanel extends JPanel {
                 acceleration = force;
                 theta = Math.atan2(particles.get(i).getY() - particella.getY(), particles.get(i).getX() - particella.getX());
             }
+            //System.out.println("Acc: " + acceleration + ", theta: " + theta);
         }
     }
 

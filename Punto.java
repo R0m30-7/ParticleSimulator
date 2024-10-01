@@ -1,3 +1,5 @@
+package ProgettiMiei.Java.particleSimulator;
+
 public class Punto {
     private double x, y;
 

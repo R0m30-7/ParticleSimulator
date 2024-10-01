@@ -1,3 +1,5 @@
+package ProgettiMiei.Java.particleSimulator;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -12,7 +14,11 @@ public class KeyboardInput implements KeyListener {
     public void keyPressed(KeyEvent e) {
         //? Se viene premuto lo spazio
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            Game.setPaused(!Game.isPaused);
+            if(!Game.getisPaused()){
+                Game.setPaused(true);
+            } else {
+                Game.setPaused(false);
+            }
         }
     }
 
